@@ -7,8 +7,15 @@
 {% block main %}
     <form action={% url 'inicio:crear_producto' %} method="post">
         {% csrf_token %}
+        <p></p>
         <p>
-            {{formulario}}
+            {{formulario.nombre}}
+        </p>
+        <p>
+            {{formulario.precio}}
+        </p>
+        <p>
+            {{formulario.stock}}
         </p>
         <p>
             <input type="submit" value="Enviar formulario">
