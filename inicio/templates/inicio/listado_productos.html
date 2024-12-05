@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block h1_header %}
+    Listado de Productos
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "inicio:listado_productos" %}>
+    <p>
+        <p>
+            {{formulario.nombre}} <input type="submit" value='Buscar'>
+        </p>
+    </p>
+    
+</form>
+    {% if listado_productos %}
+    <p>
+    <ul>
+        {% for producto in listado_productos %}
+        <li>
+            {{producto}}
+        </li>
+        {% endfor %}
+    </ul>
+    </p>
+    {% else %}
+    <p>No hay productos en el listado</p>
+    {% endif %}
+{% endblock main %}

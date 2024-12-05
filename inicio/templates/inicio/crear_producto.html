@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block h1_header %}
+    Crear Producto
+{% endblock h1_header %}
+
+{% block main %}
+    <form action={% url 'inicio:crear_producto' %} method="post">
+        {% csrf_token %}
+        <p>
+            {{formulario}}
+        </p>
+        <p>
+            <input type="submit" value="Enviar formulario">
+        </p>
+    </form>
+{% endblock main %}
