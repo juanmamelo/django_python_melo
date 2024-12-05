@@ -1,64 +1,78 @@
-1. creamos una carpeta donde vamos a meter el proyecto
+Proyecto Django - Pasos Seguidos
+A continuación, detallo los pasos que seguí para configurar y desarrollar el proyecto en Django:
 
-2. entramos en la carpeta y la abrimos con vscode
+1. Creación de la Carpeta del Proyecto
+Primero, creé una carpeta para el proyecto y la abrí en VS Code.
 
-3. creamos el archivo .gitignore le guardamos lo generado por la pagina gitignore.io seleccionando lo que van a utilizar (en nuestro caso visualstudiocode, python y django)
+2. Configuración del Archivo .gitignore
+Generé un archivo .gitignore utilizando gitignore.io, seleccionando las opciones relevantes: VisualStudioCode, Python y Django. Guardé este archivo en la carpeta del proyecto.
 
-4. creamos el entorno virtual python -m venv <venv>
+3. Creación del Entorno Virtual
+Configuré un entorno virtual con el comando:
+    python -m venv <venv>
+Luego, agregué el nombre del entorno virtual al archivo .gitignore.
 
-5. agregar el nombre del entonrno virtual al .gitignore
+4. Inicialización de Git
+Inicié un repositorio de Git dentro del proyecto con el comando:
+    git init
+Hice el primer commit:
+    git add .
+    git commit -m "Inicio del proyecto"
 
-6. inicializamos git
+5. Conexión con Repositorio Remoto
+Conecté el repositorio local con un repositorio en la nube (en GitHub, por ejemplo), y realicé el primer push:
+    git remote add origin <URL_del_repositorio>
+    git branch -M main
+    git push -u origin main
 
-7. creamos el primer commit
+6. Activación del Entorno Virtual
+Activé el entorno virtual:
+    <venv>\Scripts\activate
 
-8. conectamos nuestro repositorio con el repositorio en la nube (github u otro)
+7. Instalación de Django
+Instalé Django con el manejador de paquetes pip:
+    pip install django
 
-9. hacemos el primer push
+8. Creación del Archivo requirements.txt
+Generé el archivo requirements.txt para registrar las dependencias:
+    pip freeze > requirements.txt
 
-10. activamos el entorno virtual
+9. Creación del Proyecto Django
+Inicié el proyecto en la carpeta actual con:
+    django-admin startproject <nombre_proyecto>.
 
-11. instalar django con el manejador de paquetes de python pip con el comando pip install Django
+10. Prueba del Proyecto
+Realicé las migraciones iniciales y ejecuté el servidor para verificar que el proyecto funcionaba:
+    python manage.py migrate
+    python manage.py runserver
 
-12. crear el requirements.txt con los datos de las dependencias usando el comando pip freeze > requirements.txt
+11. Creación de la App Principal
+Creé una app con el comando:
+    python manage.py startapp <inicio>
+La añadí en el archivo settings.py y creé un archivo urls.py dentro de la app. Luego, conecté las rutas con el archivo urls.py del proyecto principal usando:
+    path('', include('<nombre_app>.urls')),
 
-13. crear el proyecto django donde estamos trabajando con el comando django-admin startproject <incio>.
+12. Configuración de Plantillas
+Ajusté el archivo settings.py añadiendo:
+    BASE_DIR / 'templates'
+a la lista DIRS en la variable TEMPLATES. Después, creé una carpeta templates al nivel de las apps.
 
-14. probamos el proyecto ejecutando primero python manage.py migrate y luego python manage.py runserver
+13. Creación del Superusuario
+Generé un superusuario para acceder al panel de administración:
+    python manage.py createsuperuser
 
-15. creamos nuestra app principal con el comando python manage.py startapp <inicio>
-    agregamos la app a el archivo settings.py
-    creamos el archivo urls.py dentro de nuestra app
-    agregamos el path que conecta al urls.py de la carpeta donde esta el settings.py al de nuestra app con el codigo path('<inicio/>', include('<inicio>.urls'))
+14. Creación de Vistas y Rutas
+Creé vistas en el archivo views.py, añadí sus rutas en el urls.py de la app correspondiente y diseñé los templates dentro de la carpeta templates. Además, conecté los templates a través de enlaces (<a>).
 
-16. agregamos el valor BASE_DIR / 'templates' a la lista en la key DIRS de la variable TEMPLATES en el archivo settings.py
+15. Modelos en Django
+Creé modelos en models.py, heredando de models.Model y definiendo atributos con los tipos de campos (CharField, IntegerField, etc.).
+Realicé migraciones:
+    python manage.py makemigrations
+    python manage.py migrate
+Registré los modelos en el archivo admin.py.
+Importé los modelos en views.py para usarlos en las vistas.
 
-17. creamos la carpeta templates a la altura de las apps
-
-18. crear un super usuario que nos permita acceder al apartado de admin de nuestra pagina ejecutando python manage.py createsuperuser
-    tener en cuenta que cuando se solicita la password cuando escriben no se muestra en la terminal pero se esta escribiendo igual (esto es para que no se vea la password que estan configurando a modo de seguridad)
-
-19. crear vistas
-    crear el path que conectara con su vista en el archivo urls.py de la app que corresponda
-    crear la vista en el archivo views.py de la app que corresponda
-    crear el template que utilizaran para la vista dentro de la carpeta templates
-    agregar el link (etiqueta a) al path que corresponde a la vista
-
-20. crear modelos
-    -crear modelo dentro de el archivo models.py
-        heredan de models.Model
-        los atributos los completan con los Fields que les brinda models ejemplo models.CharField(max_length=20)
-    -generar una migracion con el comando python manage.py makemigrations
-    -plasmar la migracion en la bd con el comando python manage.py migrate
-    -En caso de modificacion de un modelo existente, creacion de otro modelo o borrado de un modelo volver a ejecutar los pasos 2 y 3
-        tener en cuenta que para modificar el nombre y los atributos de un mismo modelo se deben hacer los pasos 2 y 3 una vez por la modificacion de los atributos y otro por el cambio en el nombre del modelo para no generar conflictos con django
-    -registrar el modelo en el apartado de admin importando en el archivo admin.py el modelo y agregando el codigo admin.site.register(<modelo_importado>)
-        en caso de ser varios modelos se puede agregar esta ultima linea para cada modelo o hacer una sola linea y pasarle todos los modelos dentro de una lista
-    -importar el modelo creado en el views.py que corresponda para utilizarlo en las vistas
-
-21. crear formularios
-    -crear el archivo forms.py dentro de la app que corresponda en caso que no este creado
-    -crear el formulario
-        heredan de forms.Form
-        los atributos los completan con los Fields que les brinda forms ejemplo forms.CharField(max_length=20)
-    -importar el formulario creado en el views.py que corresponda para utilizarlo en las vistas
+16. Creación de Formularios
+Creé un archivo forms.py en la app correspondiente.
+Definí formularios heredando de forms.Form, usando atributos como forms.CharField.
+Importé los formularios en views.py para utilizarlos en las vistas.
