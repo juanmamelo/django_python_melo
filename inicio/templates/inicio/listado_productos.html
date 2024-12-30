@@ -6,11 +6,13 @@
 
 {% block main %}
 <form action={% url "inicio:listado_productos" %}>
-    <p>
+    <ul>
         <p>
-            {{formulario.nombre}} <input type="submit" value='Buscar'>
+            <p>
+                {{formulario.nombre}} <input type="submit" value='Buscar'>
+            </p>
         </p>
-    </p>
+    </ul>
     
 </form>
     {% if listado_productos %}
@@ -18,7 +20,10 @@
     <ul>
         {% for producto in listado_productos %}
         <li>
-            {{producto}}
+            {{producto}} 
+            | <a href={% url "inicio:ver_producto" producto.id %}>Ver</a> 
+            | <a href={% url "inicio:editar_producto" producto.id %}>Editar</a>
+            | <a href={% url "inicio:eliminar_producto" producto.id %}>Eliminar</a>
         </li>
         {% endfor %}
     </ul>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block h1_header %}
+    Se elimino el producto
+{% endblock h1_header %}
+
+{% block main %}
+    <p>
+        <form action="{% url "inicio:listado_productos" %}" method="get">
+            <input type="submit" value="Volver al listado">
+        </form>
+    </p>    
+{% endblock main %}

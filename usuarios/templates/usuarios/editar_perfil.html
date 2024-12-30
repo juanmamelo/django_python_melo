@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block h1_header %}
+    Editar Perfil
+{% endblock h1_header %}
+
+{% block main %}
+    <form action={% url 'usuarios:editar_perfil' %} method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <ul>
+            <p>
+                <p>Email: {{form.email}}</p>    
+                <p>Nombre: {{form.first_name}}</p>
+                <p>Apellido: {{form.last_name}}</p>
+                <p>Avatar: {{form.avatar}}</p>
+                {% if request.user.infousuario.avatar.url %}
+                <p>Avatar actual: <img src={{request.user.infousuario.avatar.url}} alt="Sin avatar" height="100px"></p>
+                {% endif %}
+            </p>
+            <p><input type="submit" value="Guardar"></p>
+        </ul>
+    </form>
+
+    
+{% endblock main %}

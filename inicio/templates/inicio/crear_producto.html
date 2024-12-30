@@ -5,20 +5,28 @@
 {% endblock h1_header %}
 
 {% block main %}
-    <form action={% url 'inicio:crear_producto' %} method="post">
+    <form action={% url 'inicio:crear_producto' %} method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <p></p>
-        <p>
-            {{formulario.nombre}}
-        </p>
-        <p>
-            {{formulario.precio}}
-        </p>
-        <p>
-            {{formulario.stock}}
-        </p>
-        <p>
-            <input type="submit" value="Enviar formulario">
-        </p>
+        <ul>
+            <p>
+                Nombre: {{formulario.nombre}}
+            </p>
+            <p>
+                Precio: {{formulario.precio}}
+            </p>
+            <p>
+                Stock: {{formulario.stock}}
+            </p>
+            <p>
+                Fecha de agregado: {{formulario.fecha_agregado}}
+            </p>
+            <p>
+                Imagen: {{formulario.imagen}}
+            </p>
+            <p>
+                <input type="submit" value="Crear Producto">
+            </p>
+        </ul>
     </form>
 {% endblock main %}

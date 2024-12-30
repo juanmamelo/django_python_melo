@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block h1_header %}
+    Vista Producto {{producto.id}}
+{% endblock h1_header %}
+
+{% block main %}
+    <p></p>
+    <ul>
+        <p>
+            <p>Nombre: {{producto.nombre}}</p>
+            <p>Precio: {{producto.precio}}</p>
+            <p>Stock: {{producto.stock}}</p>
+            <p>Fecha de agregado: {{producto.fecha_agregado}}</p>
+            {% if producto.imagen %}
+                <p>Imagen: <img src={{producto.imagen.url}} alt="{{producto.nombre}}" height=100px></p>
+            {% else %}
+                <p>No hay imagen disponible</p>
+            {% endif %}
+        </p>
+        <p>
+            <form action="{% url "inicio:listado_productos" %}" method="get">
+                <input type="submit" value="Volver al listado de productos">
+            </form>
+        </p>    
+    </ul>
+{% endblock main %}

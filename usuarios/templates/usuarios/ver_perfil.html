@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block h1_header %}
+    Perfil de {{request.user.username}}
+{% endblock h1_header %}
+
+{% block main %}
+    <p></p>
+        <ul>
+            <p>Usuario: {{request.user.username}}</p>
+            <p>Email: {{request.user.email}}</p>    
+            <p>Nombre: {{request.user.first_name}}</p>
+            <p>Apellido: {{request.user.last_name}}</p>
+            {% if request.user.infousuario.avatar.url %}
+            <p>Avatar: <img src={{request.user.infousuario.avatar.url}} alt="Sin avatar" height="100px"></p>
+            {% endif %}
+            <p>
+                <form action="{% url "usuarios:editar_perfil" %}" method="get">
+                    <input type="submit" value="Editar Perfil">
+                </form>
+                <p></p>
+                <form action="{% url "usuarios:cambiar_contraseña" %}" method="get">
+                    <input type="submit" value="Cambiar Contraseña">
+                </form>
+            </p>
+        </ul>
+{% endblock main %}

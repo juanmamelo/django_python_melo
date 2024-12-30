@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block h1_header %}Enviar Mensaje{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "chat:enviar_mensaje" %} method="post">
+    {% csrf_token %}
+    <ul>
+    {{form}}
+    <p></p>
+    <input type="submit" value='Enviar'>
+</form>
+</ul>
+{% endblock main %}

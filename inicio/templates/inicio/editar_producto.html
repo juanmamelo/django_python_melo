@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block h1_header %}
+    Editar Producto {{producto.id}}
+{% endblock h1_header %}
+
+{% block main %}
+    <form action={% url 'inicio:editar_producto' producto.id %} method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p></p>
+        <ul>    
+            <p>
+                Nombre: {{formulario.nombre}}
+            </p>
+            <p>
+                Precio: {{formulario.precio}}
+            </p>
+            <p>
+                Stock: {{formulario.stock}}
+            </p>
+            <p>
+                Fecha de agregado: {{formulario.fecha_agregado}}
+            </p>
+            <p>
+                {{formulario.imagen}}
+            </p>
+            <p>
+                Imagen actual: {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" style="max-width: 200px;">
+                {% else %}
+                No hay imagen disponible
+                {% endif %}
+            </p>
+                <p>
+                    <input type="submit" value="Editar">
+                </p>
+            </form>
+            <p></p>
+            <p>
+                <form action="{% url "inicio:listado_productos" %}" method="get">
+                    <input type="submit" value="Cancelar">
+                </form>
+            </p>    
+        </ul>
+{% endblock main %}

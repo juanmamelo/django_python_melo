@@ -7,3 +7,16 @@ Se creo el producto correctamente.
 {% block p_header %}
     {{producto}}
 {% endblock p_header %}
+
+{% block main %}
+    <p>
+        <form action="{% url "inicio:crear_producto" %}" method="get">
+            <input type="submit" value="Crear otro producto">
+        </form>
+    </p>    
+    <p>
+        <form action="{% url "inicio:listado_productos" %}" method="get">
+            <input type="submit" value="Ir al listado de productos">
+        </form>
+    </p>    
+{% endblock main %}

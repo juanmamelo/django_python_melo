@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block h1_header %}Ver Mensaje{% endblock h1_header %}
+
+{% block main %}
+<p></p>
+<ul>
+    <li>Emisor: {{mensaje.emisor}}</li>
+    <li>Receptor: {{mensaje.receptor}}</li>
+    <li>Fecha: {{mensaje.fecha.}}</li>
+    <li>Mensaje: {{mensaje.mensaje}}</li>
+</ul>
+
+{% endblock main %}
