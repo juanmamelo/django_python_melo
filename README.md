@@ -76,3 +76,15 @@ Importé los modelos en views.py para usarlos en las vistas.
 Creé un archivo forms.py en la app correspondiente.
 Definí formularios heredando de forms.Form, usando atributos como forms.CharField.
 Importé los formularios en views.py para utilizarlos en las vistas.
+
+17. Creación de la App para Manejo de Usuarios
+Se desarrolló una app para el manejo de usuarios, implementando vistas basadas en clases (CBV) en dos vistas clave para la gestión de usuarios. Esto facilita la reutilización del código y mejora la organización del proyecto. Las CBVs permiten realizar operaciones CRUD de manera más eficiente.
+
+18. Creación de la App de Chat para Mensajería entre Usuarios
+Se desarrolló una app de chat para manejar la mensajería entre usuarios. La funcionalidad incluye la creación de conversaciones privadas y la posibilidad de enviar y recibir mensajes en tiempo real, mejorando la interactividad del proyecto.
+
+19.Optimización de la Interfaz de Usuario
+Se optimizó la interfaz de usuario para mejorar la apariencia de los formularios y las vistas. Se incorporaron mejoras visuales utilizando Bootstrap, lo que permitió que las vistas sean más atractivas y funcionales, mejorando la experiencia del usuario.
+
+20. Mejoras en la Seguridad del Proyecto
+Se implementaron mejoras en la seguridad del proyecto mediante el uso de dotenv para ocultar la SECRET_KEY. Esto ayuda a evitar que la clave secreta se suba al repositorio y asegura que el proyecto esté configurado correctamente en ambientes de desarrollo y producción.
