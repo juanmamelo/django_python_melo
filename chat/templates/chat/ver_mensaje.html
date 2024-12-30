@@ -10,5 +10,12 @@
     <li>Fecha: {{mensaje.fecha}}</li>
     <li>Mensaje: {{mensaje.mensaje}}</li>
 </ul>
+<p></p>
+<ul>
+    <form action={% url "chat:listar_mensajes" %} method="post">
+        {% csrf_token %}
+        <input type="submit" value='Volver'>
+    </form>
+</ul>
 
 {% endblock main %}
