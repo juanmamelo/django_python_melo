@@ -13,8 +13,10 @@
                 <p>Nombre: {{form.first_name}}</p>
                 <p>Apellido: {{form.last_name}}</p>
                 <p>Avatar: {{form.avatar}}</p>
-                {% if request.user.infousuario.avatar.url %}
-                <p>Avatar actual: <img src={{request.user.infousuario.avatar.url}} alt="Sin avatar" height="100px"></p>
+                {% if request.user.infousuario.avatar %}
+                <p>Avatar actual: <img src={{request.user.infousuario.avatar.url}} alt="" height="100px"></p>
+                {% else %}
+                Sin avatar
                 {% endif %}
             </p>
             <p><input type="submit" value="Guardar"></p>

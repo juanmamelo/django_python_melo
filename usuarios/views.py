@@ -30,7 +30,7 @@ def registro(request):
     formulario = RegistroDeUsuario()
     
     if request.method == 'POST':
-        formulario = RegistroDeUsuario(request.POST)
+        formulario = RegistroDeUsuario(request.POST, request.FILES)
         if formulario.is_valid():
             formulario.save()
             return redirect('usuarios:iniciar_sesion')

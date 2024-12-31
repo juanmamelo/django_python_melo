@@ -34,7 +34,7 @@
                     <div class="d-flex ms-auto align-items-center">
                         {% if  request.user.is_authenticated %}           
                         <a class="nav-item me-2" href={% url "usuarios:ver_perfil" %}>
-                            {% if request.user.infousuario.avatar.url %}
+                            {% if request.user.infousuario.avatar %}
                                 <img src={{request.user.infousuario.avatar.url}} alt="Sin avatar" height="30px">
                             {% endif %}  
                             {{ request.user.username }}

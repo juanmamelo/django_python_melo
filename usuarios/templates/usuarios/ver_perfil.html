@@ -11,8 +11,10 @@
             <p>Email: {{request.user.email}}</p>    
             <p>Nombre: {{request.user.first_name}}</p>
             <p>Apellido: {{request.user.last_name}}</p>
-            {% if request.user.infousuario.avatar.url %}
+            {% if request.user.infousuario.avatar %}
             <p>Avatar: <img src={{request.user.infousuario.avatar.url}} alt="Sin avatar" height="100px"></p>
+            {% else %}
+            <p>Sin avatar</p>
             {% endif %}
             <p>
                 <form action="{% url "usuarios:editar_perfil" %}" method="get">
