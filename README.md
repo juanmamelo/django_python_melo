@@ -1,90 +1,81 @@
-Proyecto Django - Pasos Seguidos
-A continuación, detallo los pasos que seguí para configurar y desarrollar el proyecto en Django:
 
-1. Creación de la Carpeta del Proyecto
-Primero, creé una carpeta para el proyecto y la abrí en VS Code.
+# 🌐 Proyecto Django – Aplicación Web Completa
 
-2. Configuración del Archivo .gitignore
-Generé un archivo .gitignore utilizando gitignore.io, seleccionando las opciones relevantes: VisualStudioCode, Python y Django. Guardé este archivo en la carpeta del proyecto.
+Este repositorio documenta paso a paso el desarrollo de una aplicación web construida con **Django**, abarcando desde la configuración inicial hasta la implementación de funcionalidades avanzadas como mensajería entre usuarios y optimización de la interfaz.
 
-3. Creación del Entorno Virtual
-Configuré un entorno virtual con el comando:
-    python -m venv <venv>
-Luego, agregué el nombre del entorno virtual al archivo .gitignore.
+---
 
-4. Inicialización de Git
-Inicié un repositorio de Git dentro del proyecto con el comando:
-    git init
-Hice el primer commit:
-    git add .
-    git commit -m "Inicio del proyecto"
+## 🛠️ Pasos Seguidos
 
-5. Conexión con Repositorio Remoto
-Conecté el repositorio local con un repositorio en la nube (en GitHub, por ejemplo), y realicé el primer push:
-    git remote add origin <URL_del_repositorio>
-    git branch -M main
-    git push -u origin main
+### 1. Creación del entorno de desarrollo
+- Se creó una carpeta del proyecto y se abrió en Visual Studio Code.
+- Se generó un archivo `.gitignore` usando [gitignore.io](https://gitignore.io) incluyendo: VisualStudioCode, Python y Django.
+- Se configuró un entorno virtual con `python -m venv`, y se añadió al `.gitignore`.
 
-6. Activación del Entorno Virtual
-Activé el entorno virtual:
-    <venv>\Scripts\activate
+### 2. Inicialización de Git y conexión con GitHub
+```bash
+git init
+git add .
+git commit -m "Inicio del proyecto"
+git remote add origin <URL_del_repositorio>
+git branch -M main
+git push -u origin main
+```
 
-7. Instalación de Django
-Instalé Django con el manejador de paquetes pip:
-    pip install django
+### 3. Instalación de Django y configuración del proyecto
+- Se activó el entorno virtual: `\Scripts\activate`
+- Se instaló Django: `pip install django`
+- Se generó el archivo de dependencias: `pip freeze > requirements.txt`
+- Se inició el proyecto: `django-admin startproject <nombre_proyecto>`
+- Se aplicaron migraciones iniciales y se ejecutó el servidor.
 
-8. Creación del Archivo requirements.txt
-Generé el archivo requirements.txt para registrar las dependencias:
-    pip freeze > requirements.txt
+### 4. Creación y configuración de apps
+- Se creó una app con `python manage.py startapp <nombre_app>`
+- Se registró en `settings.py` y se configuró el enrutamiento con `include()`.
+- Se creó una carpeta `templates/` y se configuró en TEMPLATES['DIRS'].
 
-9. Creación del Proyecto Django
-Inicié el proyecto en la carpeta actual con:
-    django-admin startproject <nombre_proyecto>.
+### 5. Panel de administración
+- Se generó un superusuario: `python manage.py createsuperuser`
 
-10. Prueba del Proyecto
-Realicé las migraciones iniciales y ejecuté el servidor para verificar que el proyecto funcionaba:
-    python manage.py migrate
-    python manage.py runserver
+### 6. Vistas, URLs y Templates
+- Se implementaron vistas en `views.py`
+- Se crearon rutas en `urls.py`
+- Se diseñaron templates HTML con enlaces dinámicos
 
-11. Creación de la App Principal
-Creé una app con el comando:
-    python manage.py startapp <inicio>
-La añadí en el archivo settings.py y creé un archivo urls.py dentro de la app. Luego, conecté las rutas con el archivo urls.py del proyecto principal usando:
-    path('', include('<nombre_app>.urls')),
+### 7. Modelos en Django
+- Se definieron modelos en `models.py` con campos como `CharField`, `IntegerField`, etc.
+- Se realizaron migraciones y se registraron los modelos en `admin.py`
 
-12. Configuración de Plantillas
-Ajusté el archivo settings.py añadiendo:
-    BASE_DIR / 'templates'
-a la lista DIRS en la variable TEMPLATES. Después, creé una carpeta templates al nivel de las apps.
+### 8. Formularios personalizados
+- Se creó `forms.py` y se definieron formularios con `forms.Form`
+- Se utilizaron en las vistas importando los formularios correspondientes
 
-13. Creación del Superusuario
-Generé un superusuario para acceder al panel de administración:
-    python manage.py createsuperuser
+---
 
-14. Creación de Vistas y Rutas
-Creé vistas en el archivo views.py, añadí sus rutas en el urls.py de la app correspondiente y diseñé los templates dentro de la carpeta templates. Además, conecté los templates a través de enlaces (<a>).
+## 👥 Funcionalidades avanzadas
 
-15. Modelos en Django
-Creé modelos en models.py, heredando de models.Model y definiendo atributos con los tipos de campos (CharField, IntegerField, etc.).
-Realicé migraciones:
-    python manage.py makemigrations
-    python manage.py migrate
-Registré los modelos en el archivo admin.py.
-Importé los modelos en views.py para usarlos en las vistas.
+### ✅ App para manejo de usuarios
+- Se implementaron vistas basadas en clases (CBV) para gestionar operaciones CRUD.
 
-16. Creación de Formularios
-Creé un archivo forms.py en la app correspondiente.
-Definí formularios heredando de forms.Form, usando atributos como forms.CharField.
-Importé los formularios en views.py para utilizarlos en las vistas.
+### ✅ App de chat entre usuarios
+- Mensajería privada en tiempo real entre usuarios.
 
-17. Creación de la App para Manejo de Usuarios
-Se desarrolló una app para el manejo de usuarios, implementando vistas basadas en clases (CBV) en dos vistas clave para la gestión de usuarios. Esto facilita la reutilización del código y mejora la organización del proyecto. Las CBVs permiten realizar operaciones CRUD de manera más eficiente.
+### ✅ UI mejorada con Bootstrap
+- Formularios y vistas estilizadas para una mejor experiencia de usuario.
 
-18. Creación de la App de Chat para Mensajería entre Usuarios
-Se desarrolló una app de chat para manejar la mensajería entre usuarios. La funcionalidad incluye la creación de conversaciones privadas y la posibilidad de enviar y recibir mensajes en tiempo real, mejorando la interactividad del proyecto.
+### ✅ Seguridad y variables de entorno
+- Se implementó `python-dotenv` para ocultar la `SECRET_KEY` y mejorar la seguridad.
 
-19.Optimización de la Interfaz de Usuario
-Se optimizó la interfaz de usuario para mejorar la apariencia de los formularios y las vistas. Se incorporaron mejoras visuales utilizando Bootstrap, lo que permitió que las vistas sean más atractivas y funcionales, mejorando la experiencia del usuario.
+---
 
-20. Mejoras en la Seguridad del Proyecto
-Se implementaron mejoras en la seguridad del proyecto mediante el uso de dotenv para ocultar la SECRET_KEY. Esto ayuda a evitar que la clave secreta se suba al repositorio y asegura que el proyecto esté configurado correctamente en ambientes de desarrollo y producción.
+## 🧑‍💻 Autor
+
+Juan Manuel Melo  
+🔗 [LinkedIn](https://www.linkedin.com/in/juan-manuel-melo95/)  
+📧 juanmanuelmelo95@gmail.com
+
+---
+
+## 📄 Licencia
+
+MIT License – ver archivo `LICENSE` para más detalles.
